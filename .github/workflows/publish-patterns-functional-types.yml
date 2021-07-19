@@ -1,0 +1,49 @@
+name: Publish Patterns.Functional.Types
+
+env:
+  PROJECT: Patterns.Functional.Types
+  PATH_PROJECT: Patterns.Functional.Types
+  PATH_TESTS_UNIT: Tests\UnitTests\Patterns.Functional.Types.UnitTests
+  
+on: [push, pull_request]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Parse Branch
+      run: |
+        FULL_BRANCH_PATH="${{ github.ref }}"
+        echo "BRANCH=${FULL_BRANCH_PATH/refs\/heads\//}" >> $GITHUB_ENV
+        
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    
+    - name: Install dependencies
+      run: dotnet restore
+    
+    - name: Build
+      run: dotnet build --configuration Release /p:Branch=$BRANCH
+    
+    - name: Unit Tests
+      if: ${{ env.PATH_TESTS_UNIT != '' }}
+      run: dotnet test "${{ env.PATH_TESTS_UNIT }}" --configuration Release --no-build
+    
+    - name: Create Package
+      run: |
+        echo "Packaging: ${{ env.PROJECT }}"
+        echo "Branch: ${{ env.BRANCH }}"
+        logs=$(dotnet pack "${{ env.PATH_PROJECT }}" --configuration Release --no-build --output .nupkgs /p:Branch=${{ env.BRANCH }})
+        echo $logs
+        echo "NUPKG=$(temp=${logs#*Successfully created package \'}; temp=${temp%\'*}; echo $temp)" >> $GITHUB_ENV
+        
+    - name: Publish Package
+      run: |
+        echo "Publishing: ${{ env.NUPKG }}"
+        dotnet nuget push "${{ env.NUPKG }}" --api-key ${{ secrets.NUGET }}
