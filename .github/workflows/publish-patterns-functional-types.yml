@@ -46,4 +46,4 @@ jobs:
     - name: Publish Package
       run: |
         echo "Publishing: ${{ env.NUPKG }}"
-        dotnet nuget push "${{ env.NUPKG }}" --api-key ${{ secrets.NUGET }}
+        dotnet nuget push "${{ env.NUPKG }}" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET }}
