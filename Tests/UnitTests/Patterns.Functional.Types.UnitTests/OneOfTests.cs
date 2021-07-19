@@ -1,4 +1,5 @@
 ﻿using System;
+using Patterns.Functional.Types.Exceptions;
 using Xunit;
 
 namespace Patterns.Functional.Types.UnitTests {
@@ -91,7 +92,7 @@ namespace Patterns.Functional.Types.UnitTests {
             result.Set(valueInt);
 
             Assert.Equal(valueInt, (int)result);
-            Assert.Throws<Exception>(() => (string)result);
+            Assert.Throws<OneOfTypeMismatchException>(() => (string)result);
         }
 
         [Fact]
@@ -104,7 +105,7 @@ namespace Patterns.Functional.Types.UnitTests {
             result.Set(valueString);
 
             Assert.Equal(valueString, result);
-            Assert.Throws<Exception>(() => (int)result);
+            Assert.Throws<OneOfTypeMismatchException>(() => (int)result);
         }
 
         [Fact]
