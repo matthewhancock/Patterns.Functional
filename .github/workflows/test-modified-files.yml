@@ -14,8 +14,8 @@ jobs:
         format: 'csv'
       
     - id: exit-if-no-files
-      if: ${{ steps.files.outputs.all }} != *"test-modifiedpfiles.yml"*
-      run: echo 'Modified files do not contain \"test-modifiedpfiles.yml\"' && exit 1
+      if: ${{ steps.files.outputs.all }} != *"test-modified-files.yml"*
+      run: echo 'Modified files do not contain \"test-modified-files.yml\"' && exit 1
         
     - id: post-validation
-      run: echo 'test-modifiedpfiles.yml was included'
+      run: echo 'test-modified-files.yml was included'
