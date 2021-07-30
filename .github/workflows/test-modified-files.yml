@@ -16,7 +16,7 @@ jobs:
       
     - id: exit-if-no-files
       name: Verify Yml file modified
-      if: ${{ steps.files.outputs.all != *"test-modified-files.yml"* }}
+      if: contains(steps.files.outputs.all, 'test-modified-files.yml')
       run: echo 'Modified files (${{ steps.files.outputs.all }}) do not contain "test-modified-files.yml"' && exit 1
         
     - id: post-validation
