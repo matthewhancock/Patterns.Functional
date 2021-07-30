@@ -11,4 +11,11 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1
       with:
-        format: 'json'
+        format: 'csv'
+      
+    - id: exit-if-no-files
+      if: ${{ steps.files.outputs.all }} == *"test-modified"*
+      run: exit 1
+        
+    - id: post-fail
+      run: echo 'here'
