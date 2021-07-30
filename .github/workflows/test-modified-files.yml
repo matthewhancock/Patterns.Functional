@@ -1,0 +1,14 @@
+
+name: Get Modified Files
+  
+on: [push, pull_request]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+      
+    steps:
+    - id: files
+      uses: jitterbit/get-changed-files@v1
+      with:
+        format: 'json'
