@@ -8,8 +8,7 @@ env:
 on: [push, pull_request]
 
 jobs:
-  filter:
-    name: Check If Project Modified
+  main:
     runs-on: ubuntu-latest
       
     steps:
@@ -23,11 +22,7 @@ jobs:
       name: Exit If Not Modified
       if: contains(steps.files.outputs.all, env.PATH_PROJECT) == 0
       run: echo 'Modified files (${{ steps.files.outputs.all }}) do not contain "${{ env.PATH_PROJECT }}"' && exit 1
-
-  main:
-    runs-on: ubuntu-latest
       
-    steps:
     - name: Checkout
       uses: actions/checkout@v2
     
