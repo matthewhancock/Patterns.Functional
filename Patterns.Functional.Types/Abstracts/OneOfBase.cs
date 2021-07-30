@@ -40,6 +40,12 @@ namespace Patterns.Functional.Types.Abstracts {
                 Action2(Value2);
             }
         }
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                _ => default
+            };
     }
 
     public abstract class OneOfBase<T1, T2, T3> : OneOf<T1, T2> {
@@ -68,6 +74,13 @@ namespace Patterns.Functional.Types.Abstracts {
                 Action3(Value3);
             }
         }
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2, Func<T3, TResult> Func3)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                OneOfTypeEnum.T3 => Func3(Value3),
+                _ => default
+            };
     }
 
     public abstract class OneOfBase<T1, T2, T3, T4> : OneOfBase<T1, T2, T3> {
@@ -99,6 +112,14 @@ namespace Patterns.Functional.Types.Abstracts {
                 Action4(Value4);
             }
         }
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2, Func<T3, TResult> Func3, Func<T4, TResult> Func4)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                OneOfTypeEnum.T3 => Func3(Value3),
+                OneOfTypeEnum.T4 => Func4(Value4),
+                _ => default
+            };
     }
 
     public abstract class OneOfBase<T1, T2, T3, T4, T5> : OneOfBase<T1, T2, T3, T4> {
@@ -133,6 +154,16 @@ namespace Patterns.Functional.Types.Abstracts {
                 Action5(Value5);
             }
         }
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2, Func<T3, TResult> Func3, Func<T4, TResult> Func4,
+            Func<T5, TResult> Func5)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                OneOfTypeEnum.T3 => Func3(Value3),
+                OneOfTypeEnum.T4 => Func4(Value4),
+                OneOfTypeEnum.T5 => Func5(Value5),
+                _ => default
+            };
     }
 
     public abstract class OneOfBase<T1, T2, T3, T4, T5, T6> : OneOfBase<T1, T2, T3, T4, T5> {
@@ -170,6 +201,17 @@ namespace Patterns.Functional.Types.Abstracts {
                 Action6(Value6);
             }
         }
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2, Func<T3, TResult> Func3, Func<T4, TResult> Func4,
+            Func<T5, TResult> Func5, Func<T6, TResult> Func6)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                OneOfTypeEnum.T3 => Func3(Value3),
+                OneOfTypeEnum.T4 => Func4(Value4),
+                OneOfTypeEnum.T5 => Func5(Value5),
+                OneOfTypeEnum.T6 => Func6(Value6),
+                _ => default
+            };
     }
 
     public abstract class OneOfBase<T1, T2, T3, T4, T5, T6, T7> : OneOfBase<T1, T2, T3, T4, T5, T6> {
@@ -210,6 +252,18 @@ namespace Patterns.Functional.Types.Abstracts {
                 Action7(Value7);
             }
         }
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2, Func<T3, TResult> Func3, Func<T4, TResult> Func4,
+            Func<T5, TResult> Func5, Func<T6, TResult> Func6, Func<T7, TResult> Func7)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                OneOfTypeEnum.T3 => Func3(Value3),
+                OneOfTypeEnum.T4 => Func4(Value4),
+                OneOfTypeEnum.T5 => Func5(Value5),
+                OneOfTypeEnum.T6 => Func6(Value6),
+                OneOfTypeEnum.T7 => Func7(Value7),
+                _ => default
+            };
     }
 
     public abstract class OneOfBase<T1, T2, T3, T4, T5, T6, T7, T8> : OneOfBase<T1, T2, T3, T4, T5, T6, T7> {
@@ -254,5 +308,18 @@ namespace Patterns.Functional.Types.Abstracts {
                 Action8(Value8);
             }
         }
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2, Func<T3, TResult> Func3, Func<T4, TResult> Func4,
+            Func<T5, TResult> Func5, Func<T6, TResult> Func6, Func<T7, TResult> Func7, Func<T8, TResult> Func8)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                OneOfTypeEnum.T3 => Func3(Value3),
+                OneOfTypeEnum.T4 => Func4(Value4),
+                OneOfTypeEnum.T5 => Func5(Value5),
+                OneOfTypeEnum.T6 => Func6(Value6),
+                OneOfTypeEnum.T7 => Func7(Value7),
+                OneOfTypeEnum.T8 => Func8(Value8),
+                _ => default
+            };
     }
 }

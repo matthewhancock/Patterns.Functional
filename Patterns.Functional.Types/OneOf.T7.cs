@@ -196,7 +196,18 @@ namespace Patterns.Functional.Types {
                 Action7(Value7);
             }
         }
-
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2, Func<T3, TResult> Func3, Func<T4, TResult> Func4,
+            Func<T5, TResult> Func5, Func<T6, TResult> Func6, Func<T7, TResult> Func7)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                OneOfTypeEnum.T3 => Func3(Value3),
+                OneOfTypeEnum.T4 => Func4(Value4),
+                OneOfTypeEnum.T5 => Func5(Value5),
+                OneOfTypeEnum.T6 => Func6(Value6),
+                OneOfTypeEnum.T7 => Func7(Value7),
+                _ => default
+            };
 
         public static implicit operator T1(OneOf<T1, T2, T3, T4, T5, T6, T7> OneOfValue)
             => OneOfValue.Type == OneOfTypeEnum.T1 ? OneOfValue.Value1 : throw new OneOfTypeMismatchException();

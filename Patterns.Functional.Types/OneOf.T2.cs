@@ -16,6 +16,7 @@ namespace Patterns.Functional.Types {
         }
 
         internal OneOfTypeEnum Type { get; private set; }
+
         internal T1 Value1 { get; private set; }
         internal T2 Value2 { get; private set; }
 
@@ -68,6 +69,12 @@ namespace Patterns.Functional.Types {
                 Action2(Value2);
             }
         }
+        public TResult Switch<TResult>(Func<T1, TResult> Func1, Func<T2, TResult> Func2)
+            => Type switch {
+                OneOfTypeEnum.T1 => Func1(Value1),
+                OneOfTypeEnum.T2 => Func2(Value2),
+                _ => default
+            };
 
         public static implicit operator T1(OneOf<T1, T2> OneOfValue)
             => OneOfValue.Type == OneOfTypeEnum.T1 ? OneOfValue.Value1 : throw GetTypeMismatchException();
