@@ -4,7 +4,7 @@
     <Authors>Matthew Hancock</Authors>
     <PackageId>$(MSBuildProjectName)</PackageId>
     <PackageDescription>NuGet Package: $(MSBuildProjectName)</PackageDescription>
-    <RepositoryUrl>https://github.com/meshent/Patterns.Functional</RepositoryUrl>
+    <RepositoryUrl>https://github.com/matthewhancock/Patterns.Functional</RepositoryUrl>
   </PropertyGroup>
 
   <!-- Versioning -->
