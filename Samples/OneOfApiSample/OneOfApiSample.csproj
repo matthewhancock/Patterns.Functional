@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Patterns.Functional.Types\Patterns.Functional.Types.csproj" />
+    <PackageReference Include="Patterns.Functional.Types" Version="0.0.576.1079" />
   </ItemGroup>
-
+  
 </Project>

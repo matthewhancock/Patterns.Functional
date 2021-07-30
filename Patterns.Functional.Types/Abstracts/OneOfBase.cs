@@ -46,6 +46,13 @@ namespace Patterns.Functional.Types.Abstracts {
                 OneOfTypeEnum.T2 => Func2(Value2),
                 _ => default
             };
+
+        public object AsObject()
+            => Type switch {
+                OneOfTypeEnum.T1 => Value1,
+                OneOfTypeEnum.T2 => Value2,
+                _ => default
+            };
     }
 
     public abstract class OneOfBase<T1, T2, T3> : OneOf<T1, T2> {
@@ -79,6 +86,14 @@ namespace Patterns.Functional.Types.Abstracts {
                 OneOfTypeEnum.T1 => Func1(Value1),
                 OneOfTypeEnum.T2 => Func2(Value2),
                 OneOfTypeEnum.T3 => Func3(Value3),
+                _ => default
+            };
+
+        public object AsObject()
+            => Type switch {
+                OneOfTypeEnum.T1 => Value1,
+                OneOfTypeEnum.T2 => Value2,
+                OneOfTypeEnum.T3 => Value3,
                 _ => default
             };
     }
@@ -118,6 +133,15 @@ namespace Patterns.Functional.Types.Abstracts {
                 OneOfTypeEnum.T2 => Func2(Value2),
                 OneOfTypeEnum.T3 => Func3(Value3),
                 OneOfTypeEnum.T4 => Func4(Value4),
+                _ => default
+            };
+
+        public object AsObject()
+            => Type switch {
+                OneOfTypeEnum.T1 => Value1,
+                OneOfTypeEnum.T2 => Value2,
+                OneOfTypeEnum.T3 => Value3,
+                OneOfTypeEnum.T4 => Value4,
                 _ => default
             };
     }
@@ -162,6 +186,16 @@ namespace Patterns.Functional.Types.Abstracts {
                 OneOfTypeEnum.T3 => Func3(Value3),
                 OneOfTypeEnum.T4 => Func4(Value4),
                 OneOfTypeEnum.T5 => Func5(Value5),
+                _ => default
+            };
+
+        public object AsObject()
+            => Type switch {
+                OneOfTypeEnum.T1 => Value1,
+                OneOfTypeEnum.T2 => Value2,
+                OneOfTypeEnum.T3 => Value3,
+                OneOfTypeEnum.T4 => Value4,
+                OneOfTypeEnum.T5 => Value5,
                 _ => default
             };
     }
@@ -210,6 +244,17 @@ namespace Patterns.Functional.Types.Abstracts {
                 OneOfTypeEnum.T4 => Func4(Value4),
                 OneOfTypeEnum.T5 => Func5(Value5),
                 OneOfTypeEnum.T6 => Func6(Value6),
+                _ => default
+            };
+
+        public object AsObject()
+            => Type switch {
+                OneOfTypeEnum.T1 => Value1,
+                OneOfTypeEnum.T2 => Value2,
+                OneOfTypeEnum.T3 => Value3,
+                OneOfTypeEnum.T4 => Value4,
+                OneOfTypeEnum.T5 => Value5,
+                OneOfTypeEnum.T6 => Value6,
                 _ => default
             };
     }
@@ -262,6 +307,18 @@ namespace Patterns.Functional.Types.Abstracts {
                 OneOfTypeEnum.T5 => Func5(Value5),
                 OneOfTypeEnum.T6 => Func6(Value6),
                 OneOfTypeEnum.T7 => Func7(Value7),
+                _ => default
+            };
+
+        public object AsObject()
+            => Type switch {
+                OneOfTypeEnum.T1 => Value1,
+                OneOfTypeEnum.T2 => Value2,
+                OneOfTypeEnum.T3 => Value3,
+                OneOfTypeEnum.T4 => Value4,
+                OneOfTypeEnum.T5 => Value5,
+                OneOfTypeEnum.T6 => Value6,
+                OneOfTypeEnum.T7 => Value7,
                 _ => default
             };
     }
@@ -319,6 +376,19 @@ namespace Patterns.Functional.Types.Abstracts {
                 OneOfTypeEnum.T6 => Func6(Value6),
                 OneOfTypeEnum.T7 => Func7(Value7),
                 OneOfTypeEnum.T8 => Func8(Value8),
+                _ => default
+            };
+
+        public object AsObject()
+            => Type switch {
+                OneOfTypeEnum.T1 => Value1,
+                OneOfTypeEnum.T2 => Value2,
+                OneOfTypeEnum.T3 => Value3,
+                OneOfTypeEnum.T4 => Value4,
+                OneOfTypeEnum.T5 => Value5,
+                OneOfTypeEnum.T6 => Value6,
+                OneOfTypeEnum.T7 => Value7,
+                OneOfTypeEnum.T8 => Value8,
                 _ => default
             };
     }

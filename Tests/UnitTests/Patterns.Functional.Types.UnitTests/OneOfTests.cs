@@ -143,5 +143,35 @@ namespace Patterns.Functional.Types.UnitTests {
 
             Assert.True(called);
         }
+
+        [Fact]
+        public void AsObjectT1() {
+            OneOf<string, int> result = "test";
+
+            var o = result.AsObject();
+
+            Assert.True(o is string);
+        }
+
+        [Fact]
+        public void AsObjectT2() {
+            OneOf<string, int> result = 123;
+
+            var o = result.AsObject();
+
+            Assert.True(o is int);
+        }
+
+        [Fact]
+        public void SwitchExpression() {
+            OneOf<string, int> result = 123;
+
+            var test = result.AsObject() switch {
+                int => true,
+                _ => false
+            };
+
+            Assert.True(test);
+        }
     }
 }

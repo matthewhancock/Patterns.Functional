@@ -2,16 +2,17 @@
 
 namespace Patterns.Functional.Types.BenchmarkTests {
     /*
-    |                         Method |      Mean |     Error |    StdDev |    Median |  Gen 0 | Gen 1 | Gen 2 | Allocated |
-    |------------------------------- |----------:|----------:|----------:|----------:|-------:|------:|------:|----------:|
-    |                      ResolveT1 | 2.3516 ns | 0.0804 ns | 0.2372 ns | 2.3498 ns |      - |     - |     - |         - |
-    |                      ResolveT2 | 0.0736 ns | 0.0331 ns | 0.0971 ns | 0.0114 ns |      - |     - |     - |         - |
-    |                SwitchResolveT1 | 4.4350 ns | 0.1744 ns | 0.5142 ns | 4.4423 ns |      - |     - |     - |         - |
-    |                SwitchResolveT2 | 3.4222 ns | 0.1779 ns | 0.5246 ns | 3.4716 ns |      - |     - |     - |         - |
-    |       External_OneOf_ResolveT1 | 6.0841 ns | 0.1714 ns | 0.5027 ns | 6.1563 ns |      - |     - |     - |         - |
-    |       External_OneOf_ResolveT2 | 6.1170 ns | 0.2727 ns | 0.8040 ns | 6.1293 ns | 0.0057 |     - |     - |      24 B |
-    | External_OneOf_SwitchResolveT1 | 6.0534 ns | 0.2318 ns | 0.6836 ns | 6.0795 ns |      - |     - |     - |         - |
-    | External_OneOf_SwitchResolveT2 | 5.9486 ns | 0.1870 ns | 0.5513 ns | 5.9095 ns |      - |     - |     - |         - |
+    |                         Method |       Mean |     Error |    StdDev |     Median |  Gen 0 | Gen 1 | Gen 2 | Allocated |
+    |------------------------------- |-----------:|----------:|----------:|-----------:|-------:|------:|------:|----------:|
+    |                      ResolveT1 |  2.3847 ns | 0.0477 ns | 0.0810 ns |  2.3675 ns |      - |     - |     - |         - |
+    |                      ResolveT2 |  0.0295 ns | 0.0251 ns | 0.0447 ns |  0.0000 ns |      - |     - |     - |         - |
+    |                SwitchResolveT1 |  3.8364 ns | 0.1127 ns | 0.1580 ns |  3.8385 ns |      - |     - |     - |         - |
+    |                SwitchResolveT2 | 15.6131 ns | 0.1618 ns | 0.1514 ns | 15.6470 ns |      - |     - |     - |         - |
+    |               SwitchExpression | 20.7905 ns | 0.4339 ns | 0.5166 ns | 20.6883 ns | 0.0057 |     - |     - |      24 B |
+    |       External_OneOf_ResolveT1 | 12.8813 ns | 1.2897 ns | 3.8027 ns | 14.1356 ns |      - |     - |     - |         - |
+    |       External_OneOf_ResolveT2 | 17.5337 ns | 0.8081 ns | 2.3826 ns | 17.9870 ns | 0.0057 |     - |     - |      24 B |
+    | External_OneOf_SwitchResolveT1 | 16.4822 ns | 0.3161 ns | 0.2957 ns | 16.4892 ns |      - |     - |     - |         - |
+    | External_OneOf_SwitchResolveT2 | 18.6922 ns | 0.4006 ns | 0.6692 ns | 18.8295 ns |      - |     - |     - |         - |
     */
 
     [MemoryDiagnoser]
@@ -114,6 +115,19 @@ namespace Patterns.Functional.Types.BenchmarkTests {
             var result = (OneOf<string, int>)value;
 
             result.Switch(_ => { }, v => { var resolved = v; });
+        }
+
+
+        [Benchmark]
+        public void SwitchExpression() {
+            OneOf<string, int> result = 123;
+
+            var test = result.AsObject() switch {
+                int => true,
+                _ => false
+            };
+
+            _ = test;
         }
 
         [Benchmark]

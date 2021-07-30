@@ -76,6 +76,13 @@ namespace Patterns.Functional.Types {
                 _ => default
             };
 
+        public object AsObject()
+            => Type switch {
+                OneOfTypeEnum.T1 => Value1,
+                OneOfTypeEnum.T2 => Value2,
+                _ => default
+            };
+
         public static implicit operator T1(OneOf<T1, T2> OneOfValue)
             => OneOfValue.Type == OneOfTypeEnum.T1 ? OneOfValue.Value1 : throw GetTypeMismatchException();
         public static implicit operator T2(OneOf<T1, T2> OneOfValue)

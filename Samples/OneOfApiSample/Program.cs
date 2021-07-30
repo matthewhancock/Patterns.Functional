@@ -20,7 +20,7 @@ app.MapGet("/{ID}", (int ID, HttpContext Context) => GetResult(ID)
 .Switch<Task>(
     async v => {
         Context.Response.StatusCode = 200;
-        await Context.Response.WriteAsync("Hello World!");
+        await Context.Response.WriteAsync(v);
     },
     _ => {
         Context.Response.StatusCode = 404;
