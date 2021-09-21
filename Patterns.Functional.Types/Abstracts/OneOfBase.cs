@@ -89,12 +89,10 @@ namespace Patterns.Functional.Types.Abstracts {
                 _ => default
             };
 
-        public object AsObject()
+        public new object AsObject()
             => Type switch {
-                OneOfTypeEnum.T1 => Value1,
-                OneOfTypeEnum.T2 => Value2,
                 OneOfTypeEnum.T3 => Value3,
-                _ => default
+                _ => base.AsObject()
             };
     }
 
@@ -136,13 +134,10 @@ namespace Patterns.Functional.Types.Abstracts {
                 _ => default
             };
 
-        public object AsObject()
+        public new object AsObject()
             => Type switch {
-                OneOfTypeEnum.T1 => Value1,
-                OneOfTypeEnum.T2 => Value2,
-                OneOfTypeEnum.T3 => Value3,
                 OneOfTypeEnum.T4 => Value4,
-                _ => default
+                _ => base.AsObject()
             };
     }
 
@@ -189,14 +184,10 @@ namespace Patterns.Functional.Types.Abstracts {
                 _ => default
             };
 
-        public object AsObject()
+        public new object AsObject()
             => Type switch {
-                OneOfTypeEnum.T1 => Value1,
-                OneOfTypeEnum.T2 => Value2,
-                OneOfTypeEnum.T3 => Value3,
-                OneOfTypeEnum.T4 => Value4,
                 OneOfTypeEnum.T5 => Value5,
-                _ => default
+                _ => base.AsObject()
             };
     }
 
@@ -247,15 +238,10 @@ namespace Patterns.Functional.Types.Abstracts {
                 _ => default
             };
 
-        public object AsObject()
+        public new object AsObject()
             => Type switch {
-                OneOfTypeEnum.T1 => Value1,
-                OneOfTypeEnum.T2 => Value2,
-                OneOfTypeEnum.T3 => Value3,
-                OneOfTypeEnum.T4 => Value4,
-                OneOfTypeEnum.T5 => Value5,
                 OneOfTypeEnum.T6 => Value6,
-                _ => default
+                _ => base.AsObject()
             };
     }
 
@@ -310,16 +296,10 @@ namespace Patterns.Functional.Types.Abstracts {
                 _ => default
             };
 
-        public object AsObject()
+        public new object AsObject()
             => Type switch {
-                OneOfTypeEnum.T1 => Value1,
-                OneOfTypeEnum.T2 => Value2,
-                OneOfTypeEnum.T3 => Value3,
-                OneOfTypeEnum.T4 => Value4,
-                OneOfTypeEnum.T5 => Value5,
-                OneOfTypeEnum.T6 => Value6,
                 OneOfTypeEnum.T7 => Value7,
-                _ => default
+                _ => base.AsObject()
             };
     }
 
@@ -379,17 +359,10 @@ namespace Patterns.Functional.Types.Abstracts {
                 _ => default
             };
 
-        public object AsObject()
+        public new object AsObject()
             => Type switch {
-                OneOfTypeEnum.T1 => Value1,
-                OneOfTypeEnum.T2 => Value2,
-                OneOfTypeEnum.T3 => Value3,
-                OneOfTypeEnum.T4 => Value4,
-                OneOfTypeEnum.T5 => Value5,
-                OneOfTypeEnum.T6 => Value6,
-                OneOfTypeEnum.T7 => Value7,
                 OneOfTypeEnum.T8 => Value8,
-                _ => default
+                _ => base.AsObject()
             };
     }
 }
