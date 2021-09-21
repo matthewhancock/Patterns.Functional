@@ -12,6 +12,17 @@ jobs:
     runs-on: ubuntu-latest
       
     steps:
+    - id: files
+      name: Get Changed Files
+      uses: jitterbit/get-changed-files@v1
+      with:
+        format: 'csv'
+      
+    - id: exit-if-no-files
+      name: Exit If Not Modified
+      if: contains(steps.files.outputs.all, env.PATH_PROJECT) == 0
+      run: echo 'Modified files (${{ steps.files.outputs.all }}) do not contain "${{ env.PATH_PROJECT }}"' && exit 1
+      
     - name: Checkout
       uses: actions/checkout@v2
     

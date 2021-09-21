@@ -1,0 +1,24 @@
+
+name: Get Modified Files
+  
+on: [push, pull_request]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+      
+    steps:
+    - id: files
+      name: Get Changed Files
+      uses: jitterbit/get-changed-files@v1
+      with:
+        format: 'csv'
+      
+    - id: exit-if-no-files
+      name: Exit If Not Modified
+      if: contains(steps.files.outputs.all, 'test-modified-files.yml') == 0
+      run: echo 'Modified files (${{ steps.files.outputs.all }}) do not contain "test-modified-files.yml"' && exit 1
+        
+    - id: post-validation
+      name: Run Next Steps
+      run: echo 'test-modified-files.yml was included'
